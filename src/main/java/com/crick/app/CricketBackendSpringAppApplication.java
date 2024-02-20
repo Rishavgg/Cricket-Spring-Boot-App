@@ -7,4 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class CricketBackendSpringAppApplication {
 
 	public static void main(String[] args) {
+		SpringApplication.run(CricketBackendSpringAppApplication.class, args);
+	}
+
 }
