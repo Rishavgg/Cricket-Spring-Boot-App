@@ -1,3 +1,3 @@
 # Cricket-SpringBoot-App
- 
-https://github.com/Rishavgg/Cricket-Spring-Boot-App/blob/main/SystemDesign.svg
+
+ ![Alt text](https://github.com/Rishavgg/Cricket-Spring-Boot-App/blob/main/SystemDesign.svg)
