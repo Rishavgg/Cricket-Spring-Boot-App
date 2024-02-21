@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface MatchRepository extends JpaRepository<Long, Match> {
+public interface MatchRepository extends JpaRepository<Match, Long> {
 
     // I want to fetch match with teamHeading
      Optional<Match> findByTeachHeading(String teamHeading);
