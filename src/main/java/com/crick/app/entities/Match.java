@@ -1,12 +1,7 @@
 package com.crick.app.entities;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-
+import lombok.*;
 import java.util.Date;
 
 @Entity
@@ -18,10 +13,17 @@ import java.util.Date;
 public class Match {
 
     @Id
+    @SequenceGenerator(
+            name = "match_sequence",
+            sequenceName = "match_sequence",
+            allocationSize = 1
+    )
     @GeneratedValue(
-            strategy = GenerationType.IDENTITY
+            strategy = GenerationType.SEQUENCE,
+            generator = "match_sequence"
     )
     private Long matchId;
+
     private String battingTeam;
     private String  battingTeamScore;
     private String bowlTeam;
@@ -32,14 +34,12 @@ public class Match {
 
     @Enumerated
     private MatchStatus matchStatus;
+
     private String teamHeading;
     private String textComplete;
+    private Date date = new Date();
 
-    @Autowired
-    private Date date;
-
-    // set the match status according to textComplete
-    public void setMatchStatus(String textComplete) {
+    public void setMatchStatus() {
         this.matchStatus = textComplete.isBlank() ? MatchStatus.LIVE : MatchStatus.ENDED;
     }
 
