@@ -61,6 +61,7 @@ public class MatchServiceImpl implements MatchService {
                         .date(new Date())
                         .build();
 
+                updateMatchinDB(matchObj);
                 matches.add(matchObj);
             }
 
@@ -69,9 +70,22 @@ public class MatchServiceImpl implements MatchService {
         }
         return matches;
     }
+
+    private void updateMatchinDB(Match matchObj) {
+        Match match = matchRepository.findByTeamHeading(matchObj.getTeamHeading()).orElse(null);
+
+        if (match == null) {
+            matchRepository.save(matchObj);
+        } else {
+            matchObj.setMatchId(match.getMatchId());
+            matchRepository.save(matchObj);
+        }
+    }
+
     public MatchStatus setMatchStatusFunc(String textComplete) {
         return textComplete.isBlank() ? MatchStatus.LIVE : MatchStatus.ENDED;
     }
+
 
     @Override
     public List<Match> getAllMatches() {

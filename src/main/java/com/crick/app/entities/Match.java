@@ -25,7 +25,7 @@ public class Match {
     private Long matchId;
 
     private String battingTeam;
-    private String  battingTeamScore;
+    private String battingTeamScore;
     private String bowlTeam;
     private String bowlTeamScore;
     private String liveText;
@@ -38,9 +38,7 @@ public class Match {
     private String teamHeading;
     private String textComplete;
     private Date date = new Date();
-
     public void setMatchStatus() {
         this.matchStatus = textComplete.isBlank() ? MatchStatus.LIVE : MatchStatus.ENDED;
     }
-
 }

@@ -18,9 +18,16 @@ public class MatchController {
     @Autowired
     MatchService matchService;
 
-    @GetMapping("/live")
     // get live matches
+    @GetMapping("/live")
     public ResponseEntity<List<Match>> getLiveMatches() {
         return new ResponseEntity<>(this.matchService.getLiveMatches(), HttpStatus.OK);
     }
+
+    // get all matches
+    @GetMapping("/allMatches")
+    public ResponseEntity<List<Match>> getAllMatches() {
+        return new ResponseEntity<>(this.matchService.getAllMatches(), HttpStatus.OK);
+    }
+
 }
